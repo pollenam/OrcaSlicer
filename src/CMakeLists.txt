@@ -103,7 +103,7 @@ if(ORCA_TOOLS)
             MACOSX_BUNDLE_BUNDLE_VERSION "${SLIC3R_VERSION}"
             MACOSX_BUNDLE_SHORT_VERSION_STRING "${SLIC3R_VERSION}"
             MACOSX_BUNDLE_IDENTIFIER "com.orcaslicer.OrcaSlicer.profile-validator"
-            MACOSX_BUNDLE_COPYRIGHT "© 2026 OrcaSlicer Pte Ltd All Rights Reserved"
+            MACOSX_BUNDLE_COPYRIGHT "© 2026 Pollen AM All Rights Reserved"
             MACOSX_BUNDLE_GUI_IDENTIFIER "com.orcaslicer.OrcaSlicer.profile-validator"
         )
     else()
@@ -261,7 +261,7 @@ else ()
         set(MACOSX_BUNDLE_ICON_FILE Icon.icns)
         set(MACOSX_BUNDLE_BUNDLE_NAME "${SLIC3R_APP_NAME}")
         set(MACOSX_BUNDLE_SHORT_VERSION_STRING ${SoftFever_VERSION})
-        set(MACOSX_BUNDLE_COPYRIGHT "Copyright(C) 2022-2024 Li Jiang All Rights Reserved")
+        set(MACOSX_BUNDLE_COPYRIGHT "Copyright(C) 2026 Pollen AM All Rights Reserved")
     endif()
     add_custom_command(TARGET OrcaSlicer POST_BUILD
         COMMAND ln -sfn "${SLIC3R_RESOURCES_DIR}" "${BIN_RESOURCES_DIR}"

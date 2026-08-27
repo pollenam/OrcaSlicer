@@ -5,7 +5,7 @@
   <key>CFBundleExecutable</key>
   <string>@SLIC3R_APP_KEY@</string>
   <key>CFBundleGetInfoString</key>
-  <string>@SLIC3R_APP_NAME@ Copyright(C) 2026 OrcaSlicer Pte Ltd All Rights Reserved</string>
+  <string>@SLIC3R_APP_NAME@ Copyright(C) 2026 Pollen AM All Rights Reserved</string>
   <key>CFBundleIconFile</key>
   <string>images/OrcaSlicer.icns</string>
   <key>CFBundleName</key>

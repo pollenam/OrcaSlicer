@@ -320,12 +320,12 @@ body
 
 .BtnItem:hover
 {
-	background-color: #BFE1DE; /*ORCA color with %25 opacity*/
+	background-color: #FDF0DC; /*Pollen AM color, light tint*/
 }
 
 .BtnItemSelected
 {
-	background-color: #BFE1DE; /*ORCA color with %25 opacity*/
+	background-color: #FDF0DC; /*Pollen AM color, light tint*/
 }
 
 .BtnIcon
