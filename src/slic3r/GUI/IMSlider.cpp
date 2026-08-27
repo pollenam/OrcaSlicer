@@ -1227,7 +1227,8 @@ bool IMSlider::render(int canvas_width, int canvas_height)
     ImGui::PushStyleVar(ImGuiStyleVar_::ImGuiStyleVar_FramePadding, ImVec2(0.0f, 0.0f));
     ImGui::PushStyleVar(ImGuiStyleVar_::ImGuiStyleVar_WindowPadding, ImVec2(0.0f, 0.0f));
     ImGui::PushStyleColor(ImGuiCol_::ImGuiCol_WindowBg, ImVec4(0.0f, 0.0f, 0.0f, 0.0f));
-    ImGui::PushStyleColor(ImGuiCol_::ImGuiCol_Text, ImGuiWrapper::COL_ORCA); // ORCA: Use orca color for slider value text
+    // Pollen: plain neutral text instead of the brand accent color (orange reads poorly here)
+    ImGui::PushStyleColor(ImGuiCol_::ImGuiCol_Text, m_is_dark ? ImVec4(0.9f, 0.9f, 0.9f, 1.f) : ImVec4(0.f, 0.f, 0.f, 1.f));
 
     int windows_flag = ImGuiWindowFlags_NoTitleBar
                        | ImGuiWindowFlags_NoCollapse

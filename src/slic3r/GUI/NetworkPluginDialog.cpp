@@ -100,7 +100,7 @@ void NetworkPluginDownloadDialog::create_missing_plugin_ui()
 
     StateColor btn_bg_green(
         std::pair<wxColour, int>(wxColour(255, 179, 0), StateColor::Pressed),
-        std::pair<wxColour, int>(wxColour(38, 166, 154), StateColor::Hovered),
+        std::pair<wxColour, int>(wxColour(255, 179, 0), StateColor::Hovered),
         std::pair<wxColour, int>(wxColour(246, 168, 0), StateColor::Normal));
 
     StateColor btn_bg_white(
@@ -160,7 +160,7 @@ void NetworkPluginDownloadDialog::create_update_available_ui(const std::string& 
 
     StateColor btn_bg_green(
         std::pair<wxColour, int>(wxColour(255, 179, 0), StateColor::Pressed),
-        std::pair<wxColour, int>(wxColour(38, 166, 154), StateColor::Hovered),
+        std::pair<wxColour, int>(wxColour(255, 179, 0), StateColor::Hovered),
         std::pair<wxColour, int>(wxColour(246, 168, 0), StateColor::Normal));
 
     StateColor btn_bg_white(
@@ -326,7 +326,7 @@ NetworkPluginRestartDialog::NetworkPluginRestartDialog(wxWindow* parent)
 
     StateColor btn_bg_green(
         std::pair<wxColour, int>(wxColour(255, 179, 0), StateColor::Pressed),
-        std::pair<wxColour, int>(wxColour(38, 166, 154), StateColor::Hovered),
+        std::pair<wxColour, int>(wxColour(255, 179, 0), StateColor::Hovered),
         std::pair<wxColour, int>(wxColour(246, 168, 0), StateColor::Normal));
 
     StateColor btn_bg_white(
