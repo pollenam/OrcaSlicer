@@ -2069,8 +2069,8 @@ void GLGizmoMeasure::show_face_face_assembly_common() {
         {
             ImGui::PushItemWidth(set_to_center_coincidence_size);
             ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(246.f / 255.f, 168.f / 255.f, 0.f / 255.f, 1.0));
-            ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4(38 / 255.0f, 166 / 255.0f, 154 / 255.0f, 1.00f));
-            ImGui::PushStyleColor(ImGuiCol_ButtonActive, ImVec4(0 / 255.0f, 137 / 255.0f, 123 / 255.0f, 1.00f));
+            ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4(255 / 255.0f, 179 / 255.0f, 0 / 255.0f, 1.00f));
+            ImGui::PushStyleColor(ImGuiCol_ButtonActive, ImVec4(163 / 255.0f, 106 / 255.0f, 0 / 255.0f, 1.00f));
             ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(254 / 255.0f, 254 / 255.0f, 254 / 255.0f, 1.00f));
             if (m_imgui->button(_L("Center coincidence"))) {
                 set_to_center_coincidence(m_same_model_object);

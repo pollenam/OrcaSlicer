@@ -47,8 +47,8 @@ static std::map<wxColour, wxColour> gDarkColors{
     {"#EBF9F0", "#293F34"},
     //{"#F0F0F0", "#4C4C54"},
     // ORCA
-    {"#BFE1DE", "#223C3C"}, // rgb(191, 225, 222)  Dropdown checked item background color > ORCA color with %25 opacity
-    {"#E5F0EE", "#283232"}, // rgb(229, 240, 238)  Combo / Dropdown focused background color > ORCA color with %10 opacity
+    {"#FDE9BF", "#5F4C25"}, // rgb(253, 233, 191)  Dropdown checked item background color > ORCA color with %25 opacity
+    {"#FEF6E6", "#41392C"}, // rgb(254, 246, 230)  Combo / Dropdown focused background color > ORCA color with %10 opacity
 };
 
 std::tuple<double, double, double> StateColor::GetLAB(const wxColour& color) {
