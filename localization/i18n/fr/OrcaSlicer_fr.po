@@ -11642,6 +11642,27 @@ msgstr ""
 "\n"
 "Le débit réel du remplissage des espaces est calculé en multipliant cette valeur par le ratio de débit du filament, et si défini, le ratio de débit de l'objet."
 
+msgid "Small perimeters flow ratio"
+msgstr "Ratio de débit des petits périmètres"
+
+msgid ""
+"This factor affects the amount of material for perimeters having radius <= small_perimeter_threshold "
+"(usually holes), overriding the outer/inner wall flow ratio above for these perimeters only.\n"
+"\n"
+"The actual small perimeters flow used is calculated by multiplying this value by the filament flow ratio, and if set, the object's flow ratio."
+msgstr ""
+"Ce facteur affecte la quantité de matériau pour les périmètres ayant un rayon <= small_perimeter_threshold "
+"(généralement des trous), en remplaçant le ratio de débit du mur extérieur/intérieur ci-dessus uniquement pour ces périmètres.\n"
+"\n"
+"Le débit réel des petits périmètres est calculé en multipliant cette valeur par le ratio de débit du filament, et si défini, le ratio de débit de l'objet."
+
+msgid "Small perimeters: outer wall only"
+msgstr "Petits périmètres : mur extérieur uniquement"
+
+msgid "When enabled, the small perimeters speed and flow ratio overrides above only apply to the outer wall of small perimeters; the inner wall keeps the normal inner wall speed and flow ratio. When disabled, they apply to both the outer and inner wall."
+msgstr "Lorsque cette option est activée, les ratios de vitesse et de débit des petits périmètres ci-dessus ne s'appliquent qu'au mur extérieur des petits périmètres ; le mur intérieur conserve la vitesse et le ratio de débit du mur intérieur normaux. Lorsqu'elle est désactivée, ils s'appliquent à la fois au mur extérieur et au mur intérieur."
+
+
 msgid "Support flow ratio"
 msgstr "Ratio de débit des supports"
 

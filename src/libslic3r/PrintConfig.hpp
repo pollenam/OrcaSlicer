@@ -1244,6 +1244,8 @@ PRINT_CONFIG_CLASS_DEFINE(
     ((ConfigOptionFloat,                sparse_infill_flow_ratio))
     ((ConfigOptionFloat,                internal_solid_infill_flow_ratio))
     ((ConfigOptionFloat,                gap_fill_flow_ratio))
+    ((ConfigOptionFloat,                flow_small_perimeters))
+    ((ConfigOptionBool,                 small_perimeters_flow_outer_wall_only))
 
     // Orca: seam slopes
     ((ConfigOptionEnum<SeamScarfType>,  seam_slope_type))

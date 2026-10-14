@@ -1230,6 +1230,8 @@ static std::vector<std::string> s_Preset_print_options{
     "sparse_infill_flow_ratio",
     "internal_solid_infill_flow_ratio",
     "gap_fill_flow_ratio",
+    "flow_small_perimeters",
+    "small_perimeters_flow_outer_wall_only",
     "support_flow_ratio",
     "support_interface_flow_ratio",
     "role_based_wipe_speed",
