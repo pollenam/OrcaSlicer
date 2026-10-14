@@ -1442,6 +1442,27 @@ void PrintConfigDef::init_fff_params()
     def->mode = comAdvanced;
     def->set_default_value(new ConfigOptionFloat(1));
 
+    def = this->add("flow_small_perimeters", coFloat);
+    def->label = L("Small perimeters flow ratio");
+    def->category = L("Advanced");
+    def->tooltip = L("This factor affects the amount of material for perimeters having radius <= small_perimeter_threshold "
+                     "(usually holes), overriding the outer/inner wall flow ratio above for these perimeters only.\n\n"
+                     "The actual small perimeters flow used is calculated by multiplying this value by the filament flow ratio, and if set, the object's flow ratio.");
+    def->min = 0;
+    def->max = 2;
+    def->mode = comAdvanced;
+    def->set_default_value(new ConfigOptionFloat(1));
+
+    def = this->add("small_perimeters_flow_outer_wall_only", coBool);
+    def->label = L("Small perimeters: outer wall only");
+    def->category = L("Advanced");
+    def->tooltip = L("When enabled, the small perimeters speed and flow ratio overrides above only apply to the outer wall "
+                     "of small perimeters; the inner wall keeps the normal inner wall speed and flow ratio. "
+                     "When disabled, they apply to both the outer and inner wall.");
+    def->mode = comAdvanced;
+    def->set_default_value(new ConfigOptionBool(false));
+
+
     def = this->add("support_flow_ratio", coFloat);
     def->label = L("Support flow ratio");
     def->category = L("Advanced");

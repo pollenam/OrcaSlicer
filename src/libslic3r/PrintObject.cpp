@@ -1450,6 +1450,8 @@ bool PrintObject::invalidate_state_by_config_options(
             || opt_key == "sparse_infill_flow_ratio"
             || opt_key == "internal_solid_infill_flow_ratio"
             || opt_key == "gap_fill_flow_ratio"
+            || opt_key == "flow_small_perimeters"
+            || opt_key == "small_perimeters_flow_outer_wall_only"
             || opt_key == "support_flow_ratio"
             || opt_key == "support_interface_flow_ratio"
             || opt_key == "brim_flow_ratio"

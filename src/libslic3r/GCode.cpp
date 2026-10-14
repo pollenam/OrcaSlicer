@@ -5923,11 +5923,18 @@ std::string GCode::extrude_loop(const ExtrusionLoop&        loop_ref,
     }
 
 
-    const auto speed_for_path = [&speed, &small_peri_speed](const ExtrusionPath& path) {
+    // Orca: shared by speed (small_perimeter_speed) and flow (flow_small_perimeters) overrides -
+    // both are gated on the same "is this loop a small perimeter" condition.
+    const auto is_small_perimeter_path = [&small_peri_speed](const ExtrusionPath& path) {
         // don't apply small perimeter setting for overhangs/bridges/non-perimeters
-        const bool is_small_small_perimeter = small_peri_speed > 0 && !is_bridge(path.role()) && is_perimeter(path.role());
-        return is_small_small_perimeter ? small_peri_speed : speed;
+        return small_peri_speed > 0 && !is_bridge(path.role()) && is_perimeter(path.role());
     };
+    const auto speed_for_path = [&speed, &small_peri_speed, &is_small_perimeter_path, this](const ExtrusionPath& path) {
+        const bool apply_small_perimeter_speed = is_small_perimeter_path(path) &&
+            (!m_config.small_perimeters_flow_outer_wall_only || path.role() == erExternalPerimeter);
+        return apply_small_perimeter_speed ? small_peri_speed : speed;
+    };
+
 
     
     //Orca: Adaptive PA: calculate average mm3_per_mm value over the length of the loop.
@@ -5949,7 +5956,7 @@ std::string GCode::extrude_loop(const ExtrusionLoop&        loop_ref,
     
     if (!enable_seam_slope) {
         for (const ExtrusionPath& path : paths) {
-            gcode += this->_extrude(path, description, speed_for_path(path));
+            gcode += this->_extrude(path, description, speed_for_path(path), is_small_perimeter_path(path));
             // Orca: Adaptive PA - dont adapt PA after the first multipath extrusion is completed
             // as we have already set the PA value to the average flow over the totality of the path
             // in the first extrude move
@@ -5986,7 +5993,7 @@ std::string GCode::extrude_loop(const ExtrusionLoop&        loop_ref,
 
         // Then extrude it
         for (const ExtrusionPath* path : new_loop.get_all_paths()) {
-            gcode += this->_extrude(*path, description, speed_for_path(*path));
+            gcode += this->_extrude(*path, description, speed_for_path(*path), is_small_perimeter_path(*path));
             // Orca: Adaptive PA - dont adapt PA after the first pultipath extrusion is completed
             // as we have already set the PA value to the average flow over the totality of the path
             // in the first extrude move
@@ -6391,7 +6398,7 @@ double GCode::calc_max_volumetric_speed(const double layer_height, const double 
     return res;
 }
 
-std::string GCode::_extrude(const ExtrusionPath &path, std::string description, double speed)
+std::string GCode::_extrude(const ExtrusionPath &path, std::string description, double speed, bool is_small_perimeter)
 {
     std::string gcode;
 
@@ -6532,7 +6539,16 @@ std::string GCode::_extrude(const ExtrusionPath &path, std::string description, 
     }
 
     if (m_config.set_other_flow_ratios) {
-        if (path.role() == erExternalPerimeter) {
+        // Orca: small perimeters (radius <= small_perimeter_threshold) use their own
+        // dedicated flow ratio instead of the outer/inner wall one, same precedence as
+        // small_perimeter_speed overriding outer_wall_speed for these loops. If
+        // small_perimeters_flow_outer_wall_only is set, only the outer wall of a small
+        // perimeter is affected; its inner wall falls through to the normal inner wall ratio.
+        const bool apply_small_perimeter_flow = is_small_perimeter &&
+            (!m_config.small_perimeters_flow_outer_wall_only || path.role() == erExternalPerimeter);
+        if (apply_small_perimeter_flow) {
+            _mm3_per_mm *= m_config.flow_small_perimeters;
+        } else if (path.role() == erExternalPerimeter) {
             _mm3_per_mm *= m_config.outer_wall_flow_ratio;
         } else if (path.role() == erPerimeter) {
             _mm3_per_mm *= m_config.inner_wall_flow_ratio;
